@@ -11,13 +11,17 @@ import {
   TOGGLE_CART,
 } from './actions';
 
-// TODO: To get a better understand of how a reducer works - add comments to the various actions in the reducer
-// create a reducer function to accept the state and action argument
-export const reducer = (state, action) => {
+const initialState = {
+  products: [],
+  cart: [],
+  cartOpen: false,
+  categories: [],
+  currentCategory: ''
+}
+
+const reducer = (state = initialState, action) => {
   switch (action.type) {
-    // TODO: Add a comment describing the functionality of the UPDATE_PRODUCTS case
-    // create a new version of the state after each of the following action is performed
-    // take a copy of existing state and modify the product array
+
     case UPDATE_PRODUCTS:
       return {
         ...state,
@@ -36,8 +40,7 @@ export const reducer = (state, action) => {
         ...state,
         cart: [...state.cart, ...action.products],
       };
-    // TODO: Add a comment describing the functionality of the UPDATE_CART_QUANTITY case
-    // take a copy of existing state and return with a modify the quantity of products in cart if the action id matches product id
+  
     case UPDATE_CART_QUANTITY:
       return {
         ...state,
@@ -50,8 +53,6 @@ export const reducer = (state, action) => {
         }),
       };
 
-    // TODO: Add a comment describing the functionality of the REMOVE_FROM_CART case
-    // ake a copy of state and return it with a modified version of the students array excluding the `product.id` in `action.payload`
     case REMOVE_FROM_CART:
       let newState = state.cart.filter((product) => {
         return product._id !== action._id;
@@ -88,13 +89,9 @@ export const reducer = (state, action) => {
         currentCategory: action.currentCategory,
       };
 
-    // TODO: Add a comment describing what the default case is for
-    // Default to returning the state as is in our switch statement
     default:
       return state;
   }
 };
 
-export function useProductReducer(initialState) {
-  return useReducer(reducer, initialState);
-}
+export default reducer;
