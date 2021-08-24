@@ -7,7 +7,7 @@
 - [License](#license)
 
 ## Deployed Link
-
+https://protected-springs-83182.herokuapp.com/
 
 
 ## Screentshot
@@ -16,6 +16,7 @@
 ## Languages & Technologies
 - GraphQL
 - Apollo Client
+- Apollo Server Express
 - React
 - JavaScript
 - Express.js
